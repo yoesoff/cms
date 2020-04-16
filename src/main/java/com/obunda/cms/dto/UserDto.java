@@ -3,11 +3,13 @@ package com.obunda.cms.dto;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter @NoArgsConstructor
+@Data
+@NoArgsConstructor
 public class UserDto {
 
     @NotNull

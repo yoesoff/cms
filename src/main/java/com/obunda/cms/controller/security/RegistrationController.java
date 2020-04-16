@@ -3,6 +3,7 @@ package com.obunda.cms.controller.security;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -13,17 +14,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.obunda.cms.dao.UserRepository;
+import com.obunda.cms.domain.User;
 import com.obunda.cms.dto.UserDto;
+import com.obunda.cms.service.UserService;
 
 @Controller
 @RequestMapping("/users")
 public class RegistrationController {
+	//https://www.baeldung.com/registration-with-spring-mvc-and-spring-security
+	
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping("/registration")
 	public String showRegistrationForm(WebRequest request, Model model) {
 	    UserDto userDto = new UserDto();
+	    User user = new User();
+	    user.setUsername("joni");
+	    user.setFirstname("Jhoni");
+	    user.setLastname("Setiawan");
+	    user.setEmail("yaya@gmail.com");
+	    user.setPassword("test123");
+	    userService.dummy(user);
+	    
 	    model.addAttribute("user", userDto);
-	    return "registration";
+	    return "user/registration";
 	}
 	
 	@PostMapping("/registration")
