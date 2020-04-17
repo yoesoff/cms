@@ -24,9 +24,6 @@ import com.obunda.cms.service.UserService;
 public class RegistrationController {
 	//https://www.baeldung.com/registration-with-spring-mvc-and-spring-security
 	
-	@Autowired
-	private UserService userService;
-	
 	@GetMapping("/registration")
 	public String showRegistrationForm(WebRequest request, Model model) {
 	    UserDto userDto = new UserDto();    

@@ -1,5 +1,6 @@
 package com.obunda.cms.domain;
 
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -7,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -28,7 +33,16 @@ public class User {
 	
 	@Column
     private String password;
+	
+	@Transient
+	private String passwordConfirm;
     
     @Column
     private String email;
+    
+    @ManyToMany
+    @JoinTable(name = "book_publisher",
+    joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private Set<Role> roles;
 }
