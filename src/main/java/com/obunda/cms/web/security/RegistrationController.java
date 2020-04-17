@@ -1,4 +1,4 @@
-package com.obunda.cms.controller.security;
+package com.obunda.cms.web.security;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -29,15 +29,7 @@ public class RegistrationController {
 	
 	@GetMapping("/registration")
 	public String showRegistrationForm(WebRequest request, Model model) {
-	    UserDto userDto = new UserDto();
-	    User user = new User();
-	    user.setUsername("joni");
-	    user.setFirstname("Jhoni");
-	    user.setLastname("Setiawan");
-	    user.setEmail("yaya@gmail.com");
-	    user.setPassword("test123");
-	    userService.dummy(user);
-	    
+	    UserDto userDto = new UserDto();    
 	    model.addAttribute("user", userDto);
 	    return "user/registration";
 	}

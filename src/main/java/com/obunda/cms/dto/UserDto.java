@@ -18,6 +18,10 @@ public class UserDto {
      
     @NotNull
     @NotEmpty
+    private String firstname;
+    
+    @NotNull
+    @NotEmpty
     private String lastname;
      
     @NotNull
