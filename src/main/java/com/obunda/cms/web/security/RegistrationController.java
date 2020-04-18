@@ -22,29 +22,5 @@ import com.obunda.cms.service.UserService;
 @Controller
 @RequestMapping("/users")
 public class RegistrationController {
-	//https://www.baeldung.com/registration-with-spring-mvc-and-spring-security
-	
-	@GetMapping("/registration")
-	public String showRegistrationForm(WebRequest request, Model model) {
-	    UserDto userDto = new UserDto();    
-	    model.addAttribute("user", userDto);
-	    return "user/registration";
-	}
-	
-	@PostMapping("/registration")
-	public ModelAndView registerUserAccount
-	      (@ModelAttribute("user") @Valid UserDto userDto, 
-	      HttpServletRequest request, Errors errors) {
-			
-	     
-//	    try {
-//	        User registered = userService.registerNewUserAccount(userDto);
-//	    } catch (UserAlreadyExistException uaeEx) {
-//	        mav.addObject("message", "An account for that username/email already exists.");
-//	        return mav;
-//	    }
-	 
-	    // rest of the implementation
-		return null;
-	}
+
 }
