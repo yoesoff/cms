@@ -18,6 +18,8 @@ import lombok.Data;
 @Data
 @Entity(name="users")
 public class User {
+	// https://www.callicoder.com/hibernate-spring-boot-jpa-many-to-many-mapping-example/
+
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private UUID id;
@@ -40,8 +42,11 @@ public class User {
     @Column
     private String email;
     
+    @Column(name = "active")
+    private Boolean active;
+    
     @ManyToMany
-    @JoinTable(name = "book_publisher",
+    @JoinTable(name = "user_role",
     joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;

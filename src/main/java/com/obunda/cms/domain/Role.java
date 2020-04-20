@@ -17,9 +17,7 @@ import lombok.Data;
 @Entity
 @Table(name = "roles")
 public class Role {
-	// https://hellokoding.com/registration-and-login-example-with-spring-security-spring-boot-spring-data-jpa-hsql-jsp/
-	// https://hellokoding.com/jpa-many-to-many-relationship-mapping-example-with-spring-boot-maven-and-mysql/
-	
+	// https://www.callicoder.com/hibernate-spring-boot-jpa-many-to-many-mapping-example/
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private UUID id;

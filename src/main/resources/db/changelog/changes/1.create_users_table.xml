@@ -16,6 +16,7 @@
 	        <column name="lastname" type="varchar(255)"/>
 	        <column name="password" type="varchar(255)"/>
 	        <column name="email" type="varchar(255)"/>
+	        <column name="email" type="boolean"/>
 	    </createTable>
 	</changeSet>
 
