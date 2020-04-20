@@ -25,7 +25,7 @@ public class UserDto {
     @NotNull
     @NotEmpty
     private String password;
-    private String matchingPassword;
+    private String passwordConfirm;
      
     @NotNull
     @NotEmpty

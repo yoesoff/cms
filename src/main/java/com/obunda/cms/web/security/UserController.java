@@ -1,14 +1,20 @@
 package com.obunda.cms.web.security;
 
+import javax.validation.Valid;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.obunda.cms.constant.Page;
 import com.obunda.cms.domain.User;
+import com.obunda.cms.dto.UserDto;
 import com.obunda.cms.service.UserService;
-import com.obunda.cms.validator.UserValidator;
 
 @Controller
 public class UserController {
@@ -16,47 +22,53 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-
-
-    @Autowired
-    private UserValidator userValidator;
-
+    
+    private static final ModelMapper modelMapper = new ModelMapper();
+    
+    @GetMapping(value={"/", "/login"})
+    public ModelAndView login(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        return modelAndView;
+    }
+    
     @GetMapping("/registration")
-    public String registration(Model model) {
-        model.addAttribute("userForm", new User());
-
-        return "registration";
+    public ModelAndView registration(){
+        ModelAndView modelAndView = new ModelAndView();
+        User user = new User();
+        modelAndView.addObject("user", user);
+        modelAndView.setViewName(Page.REGISTRATION.toString());
+        return modelAndView;
     }
-
+    
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
-        userValidator.validate(userForm, bindingResult);
-
-        if (bindingResult.hasErrors()) {
-            return "registration";
+    public ModelAndView createNewUser(@Valid UserDto userDto, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+        User userExists = userService.findUserByUsername(userDto.getUsername());
+        if (userExists != null) {
+            bindingResult.rejectValue("userName", "error.user",
+                    "There is already a user registered with the user name provided");
         }
-
-        userService.saveUser(userForm);
-
-        //securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
-
-        return "redirect:/welcome";
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("registration");
+        } else {
+            userService.saveUser(modelMapper.map(userDto, User.class));
+            modelAndView.addObject("successMessage", "User has been registered successfully");
+            modelAndView.addObject("user", new User());
+            modelAndView.setViewName(Page.REGISTRATION.toString());
+        }
+        return modelAndView;
+    }
+    
+    @GetMapping("/admin/home")
+    public ModelAndView home(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByUsername(auth.getName());
+        modelAndView.addObject("userName", "Welcome " + user.getUsername() + "/" + user.getFirstname() + " " + user.getLastname() + " (" + user.getEmail() + ")");
+        modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+        modelAndView.setViewName("admin/home");
+        return modelAndView;
     }
 
-    @GetMapping("/login")
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
-
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-
-        return "login";
-    }
-
-    @GetMapping({"/", "/welcome"})
-    public String welcome(Model model) {
-        return "welcome";
-    }
 }
