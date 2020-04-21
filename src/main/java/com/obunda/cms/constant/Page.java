@@ -12,5 +12,11 @@ public enum Page {
 		public String toString() {
 			return "user/login";
 		}
+	},
+	ADMIN_HOME {
+		@Override
+		public String toString() {
+			return "user/admin/home";
+		}
 	};
 }

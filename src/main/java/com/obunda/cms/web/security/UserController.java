@@ -1,5 +1,7 @@
 package com.obunda.cms.web.security;
 
+import java.util.Objects;
+
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
@@ -22,16 +24,16 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    
+
     private static final ModelMapper modelMapper = new ModelMapper();
-    
+
     @GetMapping(value={"/", "/login"})
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(Page.LOGIN.toString());
         return modelAndView;
     }
-    
+
     @GetMapping("/registration")
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -40,7 +42,7 @@ public class UserController {
         modelAndView.setViewName(Page.REGISTRATION.toString());
         return modelAndView;
     }
-    
+
     @PostMapping("/registration")
     public ModelAndView createNewUser(@Valid UserDto userDto, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
@@ -59,15 +61,17 @@ public class UserController {
         }
         return modelAndView;
     }
-    
+
     @GetMapping("/admin/home")
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByUsername(auth.getName());
-        modelAndView.addObject("userName", "Welcome " + user.getUsername() + "/" + user.getFirstname() + " " + user.getLastname() + " (" + user.getEmail() + ")");
-        modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("admin/home");
+        if (Objects.nonNull(user)) {
+	        modelAndView.addObject("username", "Welcome " + user.getUsername() + "/" + user.getFirstname() + " " + user.getLastname() + " (" + user.getEmail() + ")");
+	        modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+        }
+        modelAndView.setViewName(Page.ADMIN_HOME.toString());
         return modelAndView;
     }
 
