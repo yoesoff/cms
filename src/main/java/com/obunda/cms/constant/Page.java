@@ -2,8 +2,15 @@ package com.obunda.cms.constant;
 
 public enum Page {
 	REGISTRATION {
+		@Override
 		public String toString() {
-			return "registration";
+			return "user/registration";
+		}
+	},
+	LOGIN {
+		@Override
+		public String toString() {
+			return "user/login";
 		}
 	};
 }

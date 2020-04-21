@@ -28,7 +28,7 @@ public class UserController {
     @GetMapping(value={"/", "/login"})
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
+        modelAndView.setViewName(Page.LOGIN.toString());
         return modelAndView;
     }
     
