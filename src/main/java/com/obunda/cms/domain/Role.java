@@ -1,29 +1,27 @@
 package com.obunda.cms.domain;
 
 import java.util.Set;
-import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter @Getter
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role extends BaseEntity{
 	// https://www.callicoder.com/hibernate-spring-boot-jpa-many-to-many-mapping-example/
-	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private UUID id;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8454595129644237788L;
+
 	@Column
     private String name;
 
