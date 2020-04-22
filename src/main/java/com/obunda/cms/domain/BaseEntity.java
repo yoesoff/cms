@@ -15,6 +15,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 
+import org.hibernate.annotations.Where;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +24,7 @@ import lombok.Setter;
 @Setter @Getter
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Where(clause = "DELETED = 0")
 public abstract class BaseEntity implements Serializable {
 
 	/**
@@ -45,6 +48,9 @@ public abstract class BaseEntity implements Serializable {
 
     @Column(name = "DataChange_LastTime")
     private Date dataChangeLastModifiedTime;
+    
+    @Column(name = "DELETED")
+    private Integer deleted = 0;
 
     @PrePersist
     protected void prePersist() {
@@ -60,5 +66,9 @@ public abstract class BaseEntity implements Serializable {
     @PreRemove
     protected void preRemove() {
         this.dataChangeLastModifiedTime = new Date();
+    }
+    
+    public void setDeleted() {
+        this.deleted = 1;
     }
 }
