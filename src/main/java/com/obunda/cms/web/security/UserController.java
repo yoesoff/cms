@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.obunda.cms.constant.Page;
-import com.obunda.cms.domain.User;
+import com.obunda.cms.domain.security.User;
 import com.obunda.cms.dto.UserDto;
 import com.obunda.cms.service.UserService;
 

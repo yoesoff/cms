@@ -1,4 +1,4 @@
-package com.obunda.cms.domain;
+package com.obunda.cms.domain.security;
 
 import java.util.Set;
 
@@ -8,7 +8,11 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import com.obunda.cms.domain.BaseEntity;	
+import com.obunda.cms.domain.asset.Post;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -49,4 +53,7 @@ public class User extends BaseEntity{
     joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="user")
+    private Set<Post> posts;
 }

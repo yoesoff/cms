@@ -1,4 +1,4 @@
-package com.obunda.cms.domain;
+package com.obunda.cms.domain.security;
 
 import java.util.Set;
 
@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.obunda.cms.domain.BaseEntity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +27,6 @@ public class Role extends BaseEntity{
 	@Column
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
     private Set<User> users;
 }

@@ -6,7 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.obunda.cms.domain.User;
+import com.obunda.cms.domain.security.User;
 import com.obunda.cms.service.UserService;
 
 @Component

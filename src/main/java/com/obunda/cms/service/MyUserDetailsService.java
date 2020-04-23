@@ -14,8 +14,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.obunda.cms.domain.Role;
-import com.obunda.cms.domain.User;
+import com.obunda.cms.domain.security.Role;
+import com.obunda.cms.domain.security.User;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {

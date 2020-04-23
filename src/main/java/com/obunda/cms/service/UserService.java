@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.obunda.cms.dao.RoleRepository;
 import com.obunda.cms.dao.UserRepository;
-import com.obunda.cms.domain.Role;
-import com.obunda.cms.domain.User;
+import com.obunda.cms.domain.security.Role;
+import com.obunda.cms.domain.security.User;
 
 import java.util.Arrays;
 import java.util.HashSet;
