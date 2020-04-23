@@ -30,6 +30,7 @@ public abstract class BaseEntity implements Serializable {
 	/**
 	 * https://stackoverflow.com/questions/49954812/how-can-you-make-a-created-at-column-generate-the-creation-date-time-automatical
 	 * https://mkyong.com/java/how-to-generate-serialversionuid/
+	 * https://www.baeldung.com/database-auditing-jpa
 	 */
 	private static final long serialVersionUID = 6701635601151576699L;
 
@@ -37,16 +38,16 @@ public abstract class BaseEntity implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "DataChange_CreatedBy", nullable = false)
+    @Column(name = "DataChange_CreatedBy", nullable = true)
     private String dataChangeCreatedBy;
 
     @Column(name = "DataChange_CreatedTime", nullable = false)
     private Date dataChangeCreatedTime;
 
-    @Column(name = "DataChange_LastModifiedBy")
+    @Column(name = "DataChange_LastModifiedBy", nullable = true)
     private String dataChangeLastModifiedBy;
 
-    @Column(name = "DataChange_LastTime")
+    @Column(name = "DataChange_LastTime", nullable = false)
     private Date dataChangeLastModifiedTime;
     
     @Column(name = "DELETED")

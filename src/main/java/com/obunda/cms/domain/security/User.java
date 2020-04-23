@@ -11,6 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import org.hibernate.envers.Audited;
+
 import com.obunda.cms.domain.BaseEntity;	
 import com.obunda.cms.domain.asset.Post;
 
@@ -18,6 +20,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Setter @Getter
+@Audited
 @Entity(name="users")
 public class User extends BaseEntity{
 	// https://www.callicoder.com/hibernate-spring-boot-jpa-many-to-many-mapping-example/
