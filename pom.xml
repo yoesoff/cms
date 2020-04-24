@@ -16,64 +16,93 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		
+		<actuator.version>2.2.6.RELEASE</actuator.version>
+		<modelmapper.version>2.3.7</modelmapper.version>
+		<postgresql.version>42.2.12</postgresql.version>
+		<data-jpa.version>2.2.6.RELEASE</data-jpa.version>
+		<envers.version>5.4.14.Final</envers.version>
+		<liquibase-core.version>3.8.9</liquibase-core.version>
+		<liquibase-hibernate5.version>3.8</liquibase-hibernate5.version>
+		<liquibase-maven-plugin.version>3.8.9</liquibase-maven-plugin.version>
+		<spring-boot-starter-thymeleaf.version>2.2.6.RELEASE</spring-boot-starter-thymeleaf.version>
+		<spring-boot-starter-web.version>2.2.6.RELEASE</spring-boot-starter-web.version>
+		<spring-boot-devtools.version>2.2.6.RELEASE</spring-boot-devtools.version>
+		<lombok.version>1.18.12</lombok.version>
+		<spring-boot-starter-test.version>2.2.6.RELEASE</spring-boot-starter-test.version>
+		<thymeleaf-extras-springsecurity5.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity5.version>
+		<spring-boot-starter-security.version>2.2.6.RELEASE</spring-boot-starter-security.version>
+		<spring-security-test.version>5.3.1.RELEASE</spring-security-test.version>
+		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+		<springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>${actuator.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 		    <groupId>org.modelmapper</groupId>
 		    <artifactId>modelmapper</artifactId>
-		    <version>2.3.7</version>
+		    <version>${modelmapper.version}</version>
 		</dependency>
 		<!-- Database  -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version><!--$NO-MVN-MAN-VER$-->
         </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<version>${data-jpa.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-envers</artifactId>
+		    <version>${envers.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
+			<version>${liquibase-core.version}</version>
 		</dependency>
 	    <dependency>
 	        <groupId>org.liquibase.ext</groupId>
 	        <artifactId>liquibase-hibernate5</artifactId>
-	        <version>3.6</version>
+	        <version>${liquibase-hibernate5.version}</version>
         </dependency>
         <dependency>
 		    <groupId>org.liquibase</groupId>
 		    <artifactId>liquibase-maven-plugin</artifactId>
-		    <version>3.8.9</version>
+		    <version>${liquibase-maven-plugin.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring-boot-starter-web.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<version>${spring-boot-starter-thymeleaf.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
+			<version>${spring-boot-devtools.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+			<version>${lombok.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -85,32 +114,41 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+			<version>${spring-boot-starter-test.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 		    <groupId>org.thymeleaf.extras</groupId>
 		    <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+		    <version>${thymeleaf-extras-springsecurity5.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+			<version>${spring-boot-starter-security.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+			<version>${spring-security-test.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger2</artifactId>
-		    <version>2.9.2</version>
+		    <version>${springfox-swagger2.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger-ui</artifactId>
-		    <version>2.9.2</version>
+		    <version>${springfox-swagger-ui.version}</version>
 		</dependency>
 
 		<!-- webjar bootstrap and jquery dependencies -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator</artifactId>
+			<version>0.39</version>
+	  	</dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
@@ -119,7 +157,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>3.2.1</version>
+            <version>3.5.0</version>
         </dependency>
 	</dependencies>
 
