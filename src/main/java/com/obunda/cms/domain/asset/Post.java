@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import com.obunda.cms.domain.BaseEntity;
 import com.obunda.cms.domain.security.User;
@@ -29,6 +30,7 @@ public class Post extends BaseEntity {
 	private static final long serialVersionUID = 3123538914419373366L;
 
 	@Column
+	@UniqueElements
     private String title;
 	
 	@Column(columnDefinition="TEXT")

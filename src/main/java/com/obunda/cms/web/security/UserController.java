@@ -1,6 +1,7 @@
 package com.obunda.cms.web.security;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -46,8 +47,8 @@ public class UserController {
     @PostMapping("/registration")
     public ModelAndView createNewUser(@Valid UserDto userDto, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
-        User userExists = userService.findUserByUsername(userDto.getUsername());
-        if (userExists != null) {
+        Optional<User> user = userService.findUserByUsername(userDto.getUsername());
+        if (user.isPresent()) {
             bindingResult.rejectValue("userName", "error.user",
                     "There is already a user registered with the user name provided");
         }
@@ -66,9 +67,9 @@ public class UserController {
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByUsername(auth.getName());
-        if (Objects.nonNull(user)) {
-	        modelAndView.addObject("username", "Welcome " + user.getUsername() + "/" + user.getFirstname() + " " + user.getLastname() + " (" + user.getEmail() + ")");
+        Optional<User> user = userService.findUserByUsername(auth.getName());
+        if (user.isPresent()) {
+	        modelAndView.addObject("username", "Welcome " + user.get().getUsername() + "/" + user.get().getFirstname() + " " + user.get().getLastname() + " (" + user.get().getEmail() + ")");
 	        modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
         }
         modelAndView.setViewName(Page.ADMIN_HOME.toString());

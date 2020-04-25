@@ -9,6 +9,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import com.obunda.cms.domain.BaseEntity;
 
@@ -28,6 +29,7 @@ public class Role extends BaseEntity{
 	private static final long serialVersionUID = 8454595129644237788L;
 
 	@Column
+	@UniqueElements
     private String name;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")

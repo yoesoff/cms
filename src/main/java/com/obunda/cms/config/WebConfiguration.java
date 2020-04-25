@@ -22,9 +22,6 @@ public class WebConfiguration implements WebMvcConfigurer {
                         "classpath:/static/css/",
                         "classpath:/static/js/",
                         "classpath:/static/libs/");
-    	
-    	 registry.addResourceHandler("swagger-ui.html")
-         .addResourceLocations("classpath:/META-INF/resources/");
     
     	// http://zetcode.com/spring/webjars/
         registry.addResourceHandler("/webjars/**")

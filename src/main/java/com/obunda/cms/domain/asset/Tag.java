@@ -11,6 +11,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import com.obunda.cms.domain.BaseEntity;
 
@@ -29,7 +30,8 @@ public class Tag  extends BaseEntity{
 	private static final long serialVersionUID = -2233467589749052590L;
 
 	@Column
-    private String name;
+	@UniqueElements
+    private String title;
 	
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "post_tag",

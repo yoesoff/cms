@@ -33,8 +33,7 @@
 		<thymeleaf-extras-springsecurity5.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity5.version>
 		<spring-boot-starter-security.version>2.2.6.RELEASE</spring-boot-starter-security.version>
 		<spring-security-test.version>5.3.1.RELEASE</spring-security-test.version>
-		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
-		<springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
+		<spring-boot-starter-data-rest.version>2.2.6.RELEASE</spring-boot-starter-data-rest.version>
 	</properties>
 
 	<dependencies>
@@ -48,6 +47,7 @@
 		    <artifactId>modelmapper</artifactId>
 		    <version>${modelmapper.version}</version>
 		</dependency>
+
 		<!-- Database  -->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -57,17 +57,17 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>${data-jpa.version}</version>
+			<version>${data-jpa.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-envers</artifactId>
-		    <version>${envers.version}</version>
+		    <version>${envers.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
-			<version>${liquibase-core.version}</version>
+			<version>${liquibase-core.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 	    <dependency>
 	        <groupId>org.liquibase.ext</groupId>
@@ -96,7 +96,7 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
-			<version>${spring-boot-devtools.version}</version>
+			<version>${spring-boot-devtools.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -130,17 +130,7 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-			<version>${spring-security-test.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger2</artifactId>
-		    <version>${springfox-swagger2.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger-ui</artifactId>
-		    <version>${springfox-swagger-ui.version}</version>
+			<version>${spring-security-test.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 
 		<!-- webjar bootstrap and jquery dependencies -->
@@ -159,6 +149,13 @@
             <artifactId>jquery</artifactId>
             <version>3.5.0</version>
         </dependency>
+
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-rest</artifactId>
+		    <version>${spring-boot-starter-data-rest.version}</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -3,6 +3,7 @@ package com.obunda.cms.service;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,14 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.findUserByUsername(username);
-        List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
-        return buildUserForAuthentication(user, authorities);
+        Optional<User> user = userService.findUserByUsername(username);
+        
+        if (!user.isPresent()) {
+        	return null;
+        }
+        
+        List<GrantedAuthority> authorities = getUserAuthority(user.get().getRoles());
+        return buildUserForAuthentication(user.get(), authorities);
     }
     
     private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
