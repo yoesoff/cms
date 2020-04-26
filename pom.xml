@@ -33,6 +33,7 @@
 		<thymeleaf-extras-springsecurity5.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity5.version>
 		<spring-boot-starter-security.version>2.2.6.RELEASE</spring-boot-starter-security.version>
 		<spring-security-test.version>5.3.1.RELEASE</spring-security-test.version>
+		<spring-data-rest-hal-explorer.version>3.2.6.RELEASE</spring-data-rest-hal-explorer.version>
 		<spring-boot-starter-data-rest.version>2.2.6.RELEASE</spring-boot-starter-data-rest.version>
 	</properties>
 
@@ -149,6 +150,12 @@
             <artifactId>jquery</artifactId>
             <version>3.5.0</version>
         </dependency>
+
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-rest-hal-explorer</artifactId>
+		    <version>${spring-data-rest-hal-explorer.version}</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
 
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>

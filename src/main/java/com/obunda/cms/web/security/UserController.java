@@ -1,6 +1,5 @@
 package com.obunda.cms.web.security;
 
-import java.util.Objects;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -28,7 +27,7 @@ public class UserController {
 
     private static final ModelMapper modelMapper = new ModelMapper();
 
-    @GetMapping(value={"/", "/login"})
+    @GetMapping(value={"/login"})
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(Page.LOGIN.toString());
