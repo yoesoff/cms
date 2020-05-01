@@ -11,6 +11,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import com.obunda.cms.domain.BaseEntity;
@@ -20,7 +21,6 @@ import lombok.Setter;
 
 @Setter @Getter
 @Entity
-@Audited
 @Table(name = "tags")
 public class Tag  extends BaseEntity{
 

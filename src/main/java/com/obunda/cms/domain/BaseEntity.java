@@ -17,7 +17,6 @@ import javax.persistence.PreUpdate;
 
 import org.hibernate.annotations.Where;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

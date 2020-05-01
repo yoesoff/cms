@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import com.obunda.cms.domain.BaseEntity;	
 import com.obunda.cms.domain.asset.Post;
@@ -20,11 +21,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Setter @Getter
-@Audited
 @Entity(name="users")
 public class User extends BaseEntity{
 	// https://www.callicoder.com/hibernate-spring-boot-jpa-many-to-many-mapping-example/
-	
+
 	/**
 	 * 
 	 */
@@ -52,7 +52,7 @@ public class User extends BaseEntity{
     private Boolean active;
     
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role",
+    @JoinTable(name = "users_roles",
     joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;

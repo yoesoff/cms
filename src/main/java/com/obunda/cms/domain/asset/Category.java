@@ -10,7 +10,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.hibernate.envers.Audited;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import com.obunda.cms.domain.BaseEntity;
@@ -20,7 +19,6 @@ import lombok.Setter;
 
 @Setter @Getter
 @Entity
-@Audited
 @Table(name = "categories")
 public class Category  extends BaseEntity {
 

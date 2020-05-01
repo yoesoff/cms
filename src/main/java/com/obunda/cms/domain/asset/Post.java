@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import com.obunda.cms.domain.BaseEntity;
@@ -40,11 +41,14 @@ public class Post extends BaseEntity {
     private String type;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@NotAudited
     private User user;
 	
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "posts")
+    @NotAudited
     private Set<Tag> tags;
     
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "posts")
+    @NotAudited
     private Set<Category> categories;
 }
