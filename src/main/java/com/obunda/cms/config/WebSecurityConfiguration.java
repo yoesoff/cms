@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.obunda.cms.service.MyUserDetailsService;
@@ -35,8 +36,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+    protected void configure(HttpSecurity http) throws Exception {        
+        http.
+        	authorizeRequests()
             .antMatchers("/").permitAll()
             .antMatchers("/login").permitAll()
             .antMatchers("/registration").permitAll()
@@ -50,7 +52,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and().logout()
             .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
             .logoutSuccessUrl("/login").and().exceptionHandling()
-            .accessDeniedPage("/access-denied");
+            .accessDeniedPage("/access-denied")
+            .and().csrf().csrfTokenRepository(new HttpSessionCsrfTokenRepository());
     }
 
     @Override
