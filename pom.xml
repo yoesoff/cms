@@ -35,6 +35,7 @@
 		<spring-security-test.version>5.3.1.RELEASE</spring-security-test.version>
 		<spring-data-rest-hal-explorer.version>3.2.6.RELEASE</spring-data-rest-hal-explorer.version>
 		<spring-boot-starter-data-rest.version>2.2.6.RELEASE</spring-boot-starter-data-rest.version>
+		<sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -65,6 +66,8 @@
 		    <artifactId>hibernate-envers</artifactId>
 		    <version>${envers.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
+		
+		<!-- Liquibase -->
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
@@ -81,10 +84,16 @@
 		    <version>${liquibase-maven-plugin.version}</version>
 		</dependency>
 		
+		<!-- Website -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<version>${spring-boot-starter-web.version}</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
+		<dependency>
+		    <groupId>org.thymeleaf.extras</groupId>
+		    <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+		    <version>${thymeleaf-extras-springsecurity5.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -92,6 +101,7 @@
 			<version>${spring-boot-starter-thymeleaf.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 
+		<!-- Tools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -105,6 +115,8 @@
 			<optional>true</optional>
 			<version>${lombok.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
+		
+		<!-- Testing -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -116,11 +128,6 @@
 				</exclusion>
 			</exclusions>
 			<version>${spring-boot-starter-test.version}</version><!--$NO-MVN-MAN-VER$-->
-		</dependency>
-		<dependency>
-		    <groupId>org.thymeleaf.extras</groupId>
-		    <artifactId>thymeleaf-extras-springsecurity5</artifactId>
-		    <version>${thymeleaf-extras-springsecurity5.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -162,6 +169,12 @@
 		    <artifactId>spring-boot-starter-data-rest</artifactId>
 		    <version>${spring-boot-starter-data-rest.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
+		
+		<dependency>
+		    <groupId>com.obunda</groupId>
+			<artifactId>domain</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 	</dependencies>
 
@@ -174,7 +187,7 @@
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.7.0.1746</version>
+                <version>${sonar-maven-plugin.version}</version>
             </plugin>
           	<plugin>
 		        <groupId>org.liquibase</groupId>
