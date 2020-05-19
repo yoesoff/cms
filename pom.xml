@@ -66,12 +66,11 @@
 		    <artifactId>hibernate-envers</artifactId>
 		    <version>${envers.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
-		
-		<!-- Liquibase -->
+		<!-- Liquibase 
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
-			<version>${liquibase-core.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${liquibase-core.version}</version>
 		</dependency>
 	    <dependency>
 	        <groupId>org.liquibase.ext</groupId>
@@ -82,7 +81,7 @@
 		    <groupId>org.liquibase</groupId>
 		    <artifactId>liquibase-maven-plugin</artifactId>
 		    <version>${liquibase-maven-plugin.version}</version>
-		</dependency>
+		</dependency>-->
 		
 		<!-- Website -->
 		<dependency>
